@@ -14,16 +14,25 @@ function addBookToLibrary(Book) {
 function getBooks(array) {
     const container = document.querySelector(".main-container")
     for (let i = 0; i < array.length; i++) {
+        const tile = document.createElement("div")
         const author = document.createElement("p");
         const title = document.createElement("p");
         const pages = document.createElement("p");
-        div.setAttribute("id", `${i}`)
-        div.textContent = `Author: ${array[i].author}\n`
-        div.textContent = `Book: ${array[i].title}`
-        divPages: ${array[i].pages}
-        Read: ${array[i].read}
-        // alert(array[i].author); */
-        container.appendChild(div)
+        const readStatus = document.createElement("p");
+
+        tile.setAttribute("id", `${i}`)
+        
+        author.textContent = `Author: ${array[i].author}\n`
+        title.textContent = `Title: ${array[i].author}`
+        pages.textContent = `Pages: ${array[i].pages}`
+        readStatus.textContent = `Status: ${array[i].readStatus}`
+
+        container.appendChild(tile)
+        tile.appendChild(author)
+        tile.appendChild(title)
+        tile.appendChild(pages)
+        tile.appendChild(readStatus)
+
     }
 }
 

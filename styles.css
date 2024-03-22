@@ -1,3 +1,4 @@
-div {
-    white-space: pre;
+.main-container {
+    display: flex;
+    gap: 15px;
 }
