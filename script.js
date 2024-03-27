@@ -4,11 +4,15 @@ function Book(author, title, pages, read) {
     this.author = author;
     this.title = title;
     this.pages = pages;
-    this.read = false;
+    this.read = read;
 }
 
-function addBookToLibrary(Book) {
-    myLibrary.push(Book)
+function addBookToLibrary() {
+    const author = prompt("Who is the author of the book?")
+    const title = prompt("What is the title of the book?")
+    const pages = prompt("How many pages does the book have?")
+    const readStatus = prompt("Has the book been read?")
+    myLibrary.push(new Book(author, title, pages, readStatus))
 }
 
 function getBooks(array) {
