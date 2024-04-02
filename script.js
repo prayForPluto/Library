@@ -11,8 +11,8 @@ function addBookToLibrary() {
     const author = prompt("Who is the author of the book?")
     const title = prompt("What is the title of the book?")
     const pages = prompt("How many pages does the book have?")
-    const readStatus = prompt("Has the book been read?")
-    myLibrary.push(new Book(author, title, pages, readStatus))
+    const read = prompt("Has the book been read?")
+    myLibrary.push(new Book(author, title, pages, read))
 }
 
 function getBooks(array) {
@@ -29,7 +29,7 @@ function getBooks(array) {
         author.textContent = `Author: ${array[i].author}\n`
         title.textContent = `Title: ${array[i].author}`
         pages.textContent = `Pages: ${array[i].pages}`
-        readStatus.textContent = `Status: ${array[i].readStatus}`
+        readStatus.textContent = `Status: ${array[i].read}`
 
         container.appendChild(tile)
         tile.appendChild(author)
@@ -44,25 +44,25 @@ const bookOne = new Book(
     "Michael Punke",
     "The Revenant",
     272,
-    false,
+    "yes",
 );
 
 const bookTwo = new Book(
     "Cormac McCarthy",
     "Blood Meridian",
     353,
-    false,
+    "no",
 );
 
 const bookThree = new Book(
     "George Orwell",
     "Animal Farm",
     108,
-    true
+    "no",
 );
 
-addBookToLibrary(bookOne);
-addBookToLibrary(bookTwo);
-addBookToLibrary(bookThree);
+addBookToLibrary();
+addBookToLibrary();
+addBookToLibrary();
 
 getBooks(myLibrary);
