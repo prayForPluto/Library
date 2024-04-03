@@ -61,8 +61,25 @@ const bookThree = new Book(
     "no",
 );
 
-addBookToLibrary();
-addBookToLibrary();
-addBookToLibrary();
+const container = document.querySelector(".main-container")
 
-getBooks(myLibrary);
+const bookButton = document.createElement("button")
+bookButton.textContent = "Add New Book";
+
+container.appendChild(bookButton);
+
+
+
+bookButton.addEventListener("click", function bookForm() {
+    const form = document.createElement("form");
+    form.setAttribute("method", "post");
+    form.setAttribute("action", "submit.php");
+
+    const author = document.createElement("input")
+    form.setAttribute("type", "text")
+    form.setAttribute("name", "Author");
+    form.setAttribute("placeholder", "Charles Dickens")
+
+    form.appendChild(author)
+    container.appendChild(form);
+});
