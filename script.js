@@ -84,17 +84,35 @@ bookButton.addEventListener("click", function bookForm() {
     form.setAttribute("method", "post");
     form.setAttribute("action", "submit.php");
 
-    const author = document.createElement("input")
-    form.setAttribute("type", "text")
-    form.setAttribute("name", "Author");
-    form.setAttribute("placeholder", "Charles Dickens")
+    const authorLabel = document.createElement("label");
+    authorLabel.setAttribute("for", "author");
+    authorLabel.textContent = "Author";
 
-    const title = document.createElement("input")
-    form.setAttribute("type", "text")
-    form.setAttribute("name", "Title");
-    form.setAttribute("placeholder", "Rye With Cheese")
+    const author = document.createElement("input");
+    author.setAttribute("type", "text");
+    author.setAttribute("name", "Author");
+    author.setAttribute("id", "author");
+    author.setAttribute("placeholder", "Charles Dickens");
 
-    const pages = 0;
+    const titleLabel = document.createElement("label");
+    titleLabel.setAttribute("for", "title");
+    titleLabel.textContent = "Title";
+
+    const title = document.createElement("input");
+    title.setAttribute("type", "text");
+    title.setAttribute("name", "Title");
+    title.setAttribute("id", "title");
+    title.setAttribute("placeholder", "Rye With Cheese");
+
+    const pagesLabel = document.createElement("label");
+    pagesLabel.setAttribute("for", "pages");
+    pagesLabel.textContent = "Pages";
+
+    const pages = document.createElement("input");
+    pages.setAttribute("type", "text");
+    pages.setAttribute("name", "Pages");
+    pages.setAttribute("id", "pages");
+    pages.setAttribute("placeHolder", "234");
 
     const read = 0;
 
@@ -104,14 +122,18 @@ bookButton.addEventListener("click", function bookForm() {
     submitButton.type = 'submit';
     submitButton.value = 'Submit';
 
-    form.appendChild(author)
+    form.appendChild(authorLabel);
+    form.appendChild(author);
+    form.appendChild(titleLabel);
     form.appendChild(title);
+    form.appendChild(pagesLabel);
+    form.appendChild(pages);
     form.appendChild(submitButton);
     container.appendChild(form);
 
     submitButton.addEventListener("click", event => {
         event.preventDefault();
-        closeMe();
+        container.removeChild(form);
     })
 });
 
