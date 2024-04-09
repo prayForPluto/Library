@@ -1,4 +1,5 @@
 const myLibrary = [];
+let bookId = 0
 
 function Book(author, title, pages, read, bookID) {
     this.author = author;
@@ -12,17 +13,12 @@ function Book(author, title, pages, read, bookID) {
     }
 }
 
-function addBookToLibrary() {
-    let bookID = 0;
-
-    const author = prompt("Who is the author of the book?")
-    const title = prompt("What is the title of the book?")
-    const pages = prompt("How many pages does the book have?")
-    const read = prompt("Has the book been read?")
-    myLibrary.push(new Book(author, title, pages, read, bookID))
-
+function addBookToLibrary(author, title, pages, read) {
     
-}
+    myLibrary.push(new Book(author, title, pages, read, bookId))
+    bookId += 1;
+  
+} 
 
 function getBooks(array) {
     const container = document.querySelector(".main-container")
@@ -114,7 +110,14 @@ bookButton.addEventListener("click", function bookForm() {
     pages.setAttribute("id", "pages");
     pages.setAttribute("placeHolder", "234");
 
-    const read = 0;
+    const readLabel = document.createElement("label");
+    readLabel.setAttribute("for", "read");
+    readLabel.textContent = "Read";
+
+    const read = document.createElement("input");
+    read.setAttribute("type", "checkbox");
+    read.setAttribute("name", "read");
+    read.setAttribute("id", "read");
 
     const remove = 0;
 
@@ -128,11 +131,22 @@ bookButton.addEventListener("click", function bookForm() {
     titleLabel.appendChild(title);
     form.appendChild(pagesLabel);
     pagesLabel.appendChild(pages);
+    form.appendChild(readLabel);
+    readLabel.appendChild(read);
     form.appendChild(submitButton);
     container.appendChild(form);
 
     submitButton.addEventListener("click", event => {
         event.preventDefault();
+
+        let author = document.getElementById("author").value;
+        let title = document.getElementById("title").value;
+        let pages = document.getElementById("pages").value;
+        let read = document.getElementById("read").value;
+        addBookToLibrary(author, title, pages, read, bookId)
+        
+        getBooks(myLibrary);
+
         container.removeChild(form);
     })
 });
@@ -141,3 +155,5 @@ bookButton.addEventListener("click", function bookForm() {
 console.log(bookOne);
 console.log(bookTwo);
 console.log(bookThree); */
+
+
