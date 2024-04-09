@@ -123,11 +123,11 @@ bookButton.addEventListener("click", function bookForm() {
     submitButton.value = 'Submit';
 
     form.appendChild(authorLabel);
-    form.appendChild(author);
+    authorLabel.appendChild(author);
     form.appendChild(titleLabel);
-    form.appendChild(title);
+    titleLabel.appendChild(title);
     form.appendChild(pagesLabel);
-    form.appendChild(pages);
+    pagesLabel.appendChild(pages);
     form.appendChild(submitButton);
     container.appendChild(form);
 
