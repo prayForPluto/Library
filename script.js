@@ -23,24 +23,32 @@ function addBookToLibrary(author, title, pages, read) {
 function getBooks(array) {
     const container = document.querySelector(".main-container")
     for (let i = 0; i < array.length; i++) {
-        const tile = document.createElement("div")
+        const tile = document.createElement("div");
         const author = document.createElement("p");
         const title = document.createElement("p");
         const pages = document.createElement("p");
         const readStatus = document.createElement("p");
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.setAttribute("id", i)
 
         tile.setAttribute("id", `${i}`)
         
-        author.textContent = `Author: ${array[i].author}\n`
-        title.textContent = `Title: ${array[i].author}`
-        pages.textContent = `Pages: ${array[i].pages}`
-        readStatus.textContent = `Status: ${array[i].read}`
+        author.textContent = `Author: ${array[i].author}\n`;
+        title.textContent = `Title: ${array[i].author}`;
+        pages.textContent = `Pages: ${array[i].pages}`;
+        readStatus.textContent = `Status: ${array[i].read}`;
 
-        container.appendChild(tile)
-        tile.appendChild(author)
-        tile.appendChild(title)
-        tile.appendChild(pages)
-        tile.appendChild(readStatus)
+        container.appendChild(tile);
+        tile.appendChild(author);
+        tile.appendChild(title);
+        tile.appendChild(pages);
+        tile.appendChild(readStatus);
+        tile.appendChild(deleteButton);
+
+        deleteButton.addEventListener("click", () => {
+            console.log("I made it")
+        })
 
     }
 }
@@ -119,8 +127,6 @@ bookButton.addEventListener("click", function bookForm() {
     read.setAttribute("name", "read");
     read.setAttribute("id", "read");
 
-    const remove = 0;
-
     const submitButton = document.createElement("input");
     submitButton.type = 'submit';
     submitButton.value = 'Submit';
@@ -139,11 +145,16 @@ bookButton.addEventListener("click", function bookForm() {
     submitButton.addEventListener("click", event => {
         event.preventDefault();
 
+
         let author = document.getElementById("author").value;
         let title = document.getElementById("title").value;
         let pages = document.getElementById("pages").value;
         let read = document.getElementById("read").value;
         addBookToLibrary(author, title, pages, read, bookId)
+
+        for(let i = 0; i < myLibrary.length; i++) {
+            container.removeChild(i)
+        }
         
         getBooks(myLibrary);
 
