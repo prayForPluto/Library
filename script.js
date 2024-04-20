@@ -23,11 +23,23 @@ function addBookToLibrary(author, title, pages, read) {
 function getBooks(array) {
     const container = document.querySelector(".main-container")
     for (let i = 0; i < array.length; i++) {
+
+        const bookId = document.getElementById(`${i}`);
+        if (document.body.contains(bookId)) {
+            continue;
+        }
+
         const tile = document.createElement("div")
         const author = document.createElement("p");
         const title = document.createElement("p");
         const pages = document.createElement("p");
         const readStatus = document.createElement("p");
+        const deleteBook = document.createElement("button");
+        deleteBook.textContent = "Delete Book";
+
+        deleteBook.addEventListener("click", () => {
+            console.log("Here");
+        })
 
         tile.setAttribute("id", `${i}`)
         
@@ -36,11 +48,12 @@ function getBooks(array) {
         pages.textContent = `Pages: ${array[i].pages}`
         readStatus.textContent = `Status: ${array[i].read}`
 
-        container.appendChild(tile)
-        tile.appendChild(author)
-        tile.appendChild(title)
-        tile.appendChild(pages)
-        tile.appendChild(readStatus)
+        container.appendChild(tile);
+        tile.appendChild(author);
+        tile.appendChild(title);
+        tile.appendChild(pages);
+        tile.appendChild(readStatus);
+        tile.appendChild(deleteBook);
 
     }
 }
