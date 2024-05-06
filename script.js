@@ -23,7 +23,6 @@ function addBookToLibrary(author, title, pages, read) {
 function getBooks(array) {
     const container = document.querySelector(".main-container")
     for (let i = 0; i < array.length; i++) {
-<<<<<<< HEAD
 
         const bookId = document.getElementById(`${i}`);
         if (document.body.contains(bookId)) {
@@ -31,25 +30,17 @@ function getBooks(array) {
         }
 
         const tile = document.createElement("div")
-=======
-        const tile = document.createElement("div");
->>>>>>> 9219f68863d8f737befd4afa44e1098fd1854e45
         const author = document.createElement("p");
         const title = document.createElement("p");
         const pages = document.createElement("p");
         const readStatus = document.createElement("p");
-<<<<<<< HEAD
         const deleteBook = document.createElement("button");
         deleteBook.textContent = "Delete Book";
 
         deleteBook.addEventListener("click", () => {
-            console.log("Here");
+            myLibrary.splice(deleteBook.parentElement.id, 1)
+            deleteBook.parentElement.remove();
         })
-=======
-        const deleteButton = document.createElement("button");
-        deleteButton.textContent = "Delete";
-        deleteButton.setAttribute("id", i)
->>>>>>> 9219f68863d8f737befd4afa44e1098fd1854e45
 
         tile.setAttribute("id", `${i}`)
         
@@ -63,15 +54,7 @@ function getBooks(array) {
         tile.appendChild(title);
         tile.appendChild(pages);
         tile.appendChild(readStatus);
-<<<<<<< HEAD
         tile.appendChild(deleteBook);
-=======
-        tile.appendChild(deleteButton);
-
-        deleteButton.addEventListener("click", () => {
-            console.log("I made it")
-        })
->>>>>>> 9219f68863d8f737befd4afa44e1098fd1854e45
 
     }
 }
@@ -175,9 +158,6 @@ bookButton.addEventListener("click", function bookForm() {
         let read = document.getElementById("read").value;
         addBookToLibrary(author, title, pages, read, bookId)
 
-        for(let i = 0; i < myLibrary.length; i++) {
-            container.removeChild(i)
-        }
         
         getBooks(myLibrary);
 
