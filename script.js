@@ -1,6 +1,17 @@
 const myLibrary = [];
 let bookId = 0
 
+class Book { 
+    constructor(author, title, pages, read, bookID) {
+        this.author = author;
+        this.title = title;
+        this.pages = pages;
+        this.read = read;
+        this.bookID = bookID;
+    }
+}
+
+/*
 function Book(author, title, pages, read, bookID) {
     this.author = author;
     this.title = title;
@@ -12,6 +23,7 @@ function Book(author, title, pages, read, bookID) {
         return this.bookId;
     }
 }
+*/
 
 function addBookToLibrary(author, title, pages, read) {
     
@@ -23,6 +35,10 @@ function addBookToLibrary(author, title, pages, read) {
 function getBooks(array) {
     const container = document.querySelector(".main-container")
     for (let i = 0; i < array.length; i++) {
+        if (document.getElementById(i)) {
+            continue;
+        }
+
         const tile = document.createElement("div");
         const author = document.createElement("p");
         const title = document.createElement("p");
@@ -150,12 +166,18 @@ bookButton.addEventListener("click", function bookForm() {
         let title = document.getElementById("title").value;
         let pages = document.getElementById("pages").value;
         let read = document.getElementById("read").value;
-        addBookToLibrary(author, title, pages, read, bookId)
-
-        for(let i = 0; i < myLibrary.length; i++) {
-            container.removeChild(i)
-        }
         
+
+        /*
+        for(let i = 0; i < myLibrary.length; i++) {
+            console.log(myLibrary.length);
+            if (myLibrary.length != 0) {
+                container.removeChild(i);
+            }
+        }
+            */
+        
+        addBookToLibrary(author, title, pages, read, bookId)
         getBooks(myLibrary);
 
         container.removeChild(form);
